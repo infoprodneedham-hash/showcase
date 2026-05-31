@@ -14,7 +14,7 @@
             --bg-gradient: linear-gradient(135deg, #ffe5ec 0%, #cff4fc 100%);
             --card-bg: rgba(255, 255, 255, 0.85);
             --text-main: #4a4e69;
-            --text-muted: #9a8c98;
+            --text-muted: #7d7482;
             
             /* Pastel Palette */
             --pastel-pink: #ffcad4;
@@ -26,7 +26,7 @@
             
             --radius-lg: 24px;
             --radius-md: 16px;
-            --shadow: 0 8px 24px rgba(154, 140, 152, 0.15);
+            --shadow: 0 8px 24px rgba(154, 140, 152, 0.12);
             --transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
@@ -43,7 +43,7 @@
             background-attachment: fixed;
             color: var(--text-main);
             min-height: 100vh;
-            padding: 2rem 1rem;
+            padding: 3rem 1rem;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -63,7 +63,7 @@
         /* --- Header & Blurb Section --- */
         header {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 3.5rem;
             background: var(--card-bg);
             padding: 2.5rem 2rem;
             border-radius: var(--radius-lg);
@@ -82,17 +82,17 @@
         .blurb {
             font-size: 1.15rem;
             line-height: 1.6;
-            max-width: 700px;
+            max-width: 750px;
             margin: 0 auto 1.5rem auto;
             color: var(--text-main);
         }
 
         .cta-highlight {
             font-weight: 700;
-            color: #4ea8de;
+            color: #2a9d8f;
             display: inline-block;
             padding: 0.25rem 0.7rem;
-            background: #e2afff40;
+            background: #b5e2fa60;
             border-radius: 12px;
         }
 
@@ -105,10 +105,10 @@
             margin-top: 1rem;
         }
 
-        /* --- Grid Layout Architecture --- */
+        /* --- Grid Layout Architecture (4 per row on desktop) --- */
         .showcase-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 4 per row on desktop */
+            grid-template-columns: repeat(4, 1fr);
             gap: 1.5rem;
             width: 100%;
         }
@@ -117,7 +117,7 @@
         .app-card {
             background: var(--card-bg);
             border-radius: var(--radius-lg);
-            padding: 2rem 1.5rem;
+            padding: 2rem 1.25rem;
             text-align: center;
             box-shadow: var(--shadow);
             backdrop-filter: blur(10px);
@@ -129,20 +129,18 @@
             align-items: center;
             justify-content: space-between;
             transition: var(--transition);
-            position: relative;
-            overflow: hidden;
         }
 
         .app-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 12px 30px rgba(154, 140, 152, 0.25);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(154, 140, 152, 0.2);
             background: rgba(255, 255, 255, 0.95);
         }
 
-        /* Playful Icon Wrapper */
+        /* Icon Wrapper */
         .icon-wrapper {
-            width: 70px;
-            height: 70px;
+            width: 75px;
+            height: 75px;
             border-radius: var(--radius-md);
             display: flex;
             align-items: center;
@@ -152,17 +150,16 @@
         }
 
         .app-card:hover .icon-wrapper {
-            transform: rotate(10deg);
+            transform: scale(1.1) rotate(5deg);
         }
 
-        /* CSS Icon Graphics (No external media dependency) */
         .icon-shape {
-            font-size: 2rem;
+            font-size: 2.25rem;
             user-select: none;
         }
 
         .app-title {
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             margin-bottom: 0.5rem;
             color: var(--text-main);
         }
@@ -171,7 +168,7 @@
             font-size: 0.9rem;
             color: var(--text-muted);
             line-height: 1.4;
-            margin-bottom: 1.25rem;
+            margin-bottom: 1.5rem;
         }
 
         /* Bubbly Button Link */
@@ -179,43 +176,45 @@
             background: #ff7096;
             color: white;
             font-weight: 700;
-            padding: 0.6rem 1.2rem;
+            padding: 0.6rem 1.5rem;
             border-radius: var(--radius-md);
             font-size: 0.9rem;
             transition: var(--transition);
-            box-shadow: 0 4px 10px rgba(255, 112, 150, 0.3);
+            box-shadow: 0 4px 10px rgba(255, 112, 150, 0.25);
+            width: 80%;
         }
 
         .app-card:hover .card-btn {
             background: #ff477e;
-            box-shadow: 0 6px 15px rgba(255, 112, 150, 0.5);
+            box-shadow: 0 6px 15px rgba(255, 112, 150, 0.4);
+            width: 90%;
         }
 
-        /* --- Responsive Breakpoints --- */
+        /* --- Responsive Viewports --- */
         @media (max-width: 1024px) {
             .showcase-grid {
-                grid-template-columns: repeat(3, 1fr); /* 3 per row on small desktops/tablets */
+                grid-template-columns: repeat(3, 1fr);
             }
         }
 
         @media (max-width: 768px) {
             .showcase-grid {
-                grid-template-columns: repeat(2, 1fr); /* 2 per row on smaller tablets */
+                grid-template-columns: repeat(2, 1fr);
             }
             h1 {
-                font-size: 2.25rem;
+                font-size: 2.5rem;
             }
         }
 
         @media (max-width: 480px) {
             .showcase-grid {
-                grid-template-columns: 1fr; /* 1 per row on mobile screens */
+                grid-template-columns: 1fr;
             }
             body {
-                padding: 1rem 0.5rem;
+                padding: 1.5rem 0.5rem;
             }
             header {
-                padding: 1.5rem 1rem;
+                padding: 1.75rem 1rem;
                 margin-bottom: 2rem;
             }
         }
@@ -227,10 +226,10 @@
         <header>
             <h1>Web Apps Showcase</h1>
             <p class="blurb">
-                Welcome! This platform was crafted blending <strong>human intelligence</strong> and <strong>AI</strong> architecture to build seamless digital interactions. <span class="cta-highlight">You can have apps like these working for you!</span> Dive in and explore the possibilities.
+                This collection highlights tools built using a blend of <strong>human intelligence</strong> and <strong>AI</strong> frameworks to achieve clean, practical digital workflows. <span class="cta-highlight">You can have apps like these working for you!</span>
             </p>
             <div class="disclaimer">
-                <strong>Disclaimer:</strong> Strictly for hobby use only at this stage.
+                <strong>Disclaimer:</strong> Hobby use only at this stage.
             </div>
         </header>
 
@@ -239,35 +238,33 @@
     </div>
 
     <script>
-        // Data Registry for 12 Apps containing Titles, Outlines, Mock URLs, Custom CSS Palette targets, and Unicode Layout Icons
+        // High-accuracy application naming and iconography registry
         const showcaseApps = [
-            { title: "TaskyBuddy", desc: "Keep track of your whimsical daily goals effortlessly.", icon: "📝", bg: "var(--pastel-pink)", url: "https://example.com/taskybuddy" },
-            { title: "ZenCloud", desc: "Immersive nature soundscapes to float your stress away.", icon: "☁️", bg: "var(--pastel-blue)", url: "https://example.com/zencloud" },
-            { title: "BakeTime", desc: "A cheerful timer for perfectly golden pastries.", icon: "🍪", bg: "var(--pastel-yellow)", url: "https://example.com/baketime" },
-            { title: "SproutLog", desc: "Track your plant babies' hydration and growth.", icon: "🌱", bg: "var(--pastel-green)", url: "https://example.com/sproutlog" },
-            { title: "MoodRing", desc: "Log your daily vibes with vibrant pastel aesthetics.", icon: "🎨", bg: "var(--pastel-purple)", url: "https://example.com/moodring" },
-            { title: "CaloCrunch", desc: "A delightful way to tally your snacks and meals.", icon: "🍎", bg: "var(--pastel-peach)", url: "https://example.com/calocrunch" },
-            { title: "DoodlePad", desc: "A clean canvas for your spontaneous digital sketches.", icon: "✏️", bg: "var(--pastel-pink)", url: "https://example.com/doodlepad" },
-            { title: "PocketBudget", desc: "An approachable layout for tracking pocket change.", icon: "💰", bg: "var(--pastel-green)", url: "https://example.com/pocketbudget" },
-            { title: "FitHop", desc: "Fun, accessible micro-workouts for energetic breaks.", icon: "👟", bg: "var(--pastel-blue)", url: "https://example.com/fithop" },
-            { title: "StarGaze", desc: "Locate constellations in real time from your screen.", icon: "✨", bg: "var(--pastel-purple)", url: "https://example.com/stargaze" },
-            { title: "WordWiggle", desc: "An engaging daily linguistic and spelling challenge.", icon: "🧩", bg: "var(--pastel-yellow)", url: "https://example.com/wordwiggle" },
-            { title: "AquaRemind", desc: "Friendly animations reminding you to stay hydrated.", icon: "💧", bg: "var(--pastel-peach)", url: "https://example.com/aquaremind" }
+            { title: "Invoice Generator", desc: "Instantly create, itemize, and format professional customer invoices online.", icon: "🧾", bg: "var(--pastel-pink)", url: "https://example.com/invoice-generator" },
+            { title: "Weather Dashboard", desc: "Real-time local forecasts, atmospheric conditions, and weekly outlooks.", icon: "🌤️", bg: "var(--pastel-blue)", url: "https://example.com/weather-dashboard" },
+            { title: "Task Manager", desc: "Organize workflows, establish deadlines, and check off completed targets.", icon: "📋", bg: "var(--pastel-yellow)", url: "https://example.com/task-manager" },
+            { title: "Retro Arcade Hub", desc: "A curated collection of classic, browser-based responsive mini-games.", icon: "🕹️", bg: "var(--pastel-purple)", url: "https://example.com/retro-arcade" },
+            { title: "SaaS Metrics Tracker", desc: "Monitor monthly recurring revenue, client signups, and business growth analytics.", icon: "📈", bg: "var(--pastel-green)", url: "https://example.com/metrics-tracker" },
+            { title: "Shift Scheduler", desc: "Easily calendar daily hours, client service logs, and roster rotations.", icon: "📅", bg: "var(--pastel-peach)", url: "https://example.com/shift-scheduler" },
+            { title: "Password Vault", desc: "Securely generate and store complex, localized cryptographic passwords.", icon: "🔒", bg: "var(--pastel-blue)", url: "https://example.com/password-vault" },
+            { title: "Markdown Editor", desc: "Write, preview, and export clean rich-text formatting effortlessly.", icon: "📝", bg: "var(--pastel-pink)", url: "https://example.com/markdown-editor" },
+            { title: "Resume Builder", desc: "Input professional details to generate instantly polished career profiles.", icon: "💼", bg: "var(--pastel-green)", url: "https://example.com/resume-builder" },
+            { title: "Expense Tracker", desc: "Log overhead operational costs, receipts, and structural budgets.", icon: "💰", bg: "var(--pastel-yellow)", url: "https://example.com/expense-tracker" },
+            { title: "CRM Contact Log", desc: "Manage client interaction notes, profile histories, and support logs.", icon: "👥", bg: "var(--pastel-purple)", url: "https://example.com/crm-log" },
+            { title: "Unit Converter", desc: "Fast conversions between metrics, weights, and digital formats.", icon: "🔄", bg: "var(--pastel-peach)", url: "https://example.com/unit-converter" }
         ];
 
         const gridContainer = document.getElementById('grid-container');
 
-        // Dynamic Card Builder Engine
+        // Render loop matching layouts precisely
         showcaseApps.forEach(app => {
-            // Build the core link element container
             const card = document.createElement('a');
             card.className = 'app-card';
             card.href = app.url;
             card.target = '_blank';
             card.rel = 'noopener noreferrer';
-            card.setAttribute('aria-label', `Open ${app.title} web application in a new tab`);
+            card.setAttribute('aria-label', `Launch the ${app.title} application in a new tab`);
 
-            // Assemble internal structure
             card.innerHTML = `
                 <div class="icon-wrapper" style="background-color: ${app.bg};">
                     <span class="icon-shape" role="img" aria-hidden="true">${app.icon}</span>
@@ -276,7 +273,7 @@
                     <h2 class="app-title">${app.title}</h2>
                     <p class="app-desc">${app.desc}</p>
                 </div>
-                <span class="card-btn">Launch App</span>
+                <span class="card-btn">Open App</span>
             `;
 
             gridContainer.appendChild(card);
