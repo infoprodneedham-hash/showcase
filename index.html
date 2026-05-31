@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Apps Showcase</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- Design System & Variables --- */
+        :root {
+            --bg-gradient: linear-gradient(135deg, #ffe5ec 0%, #cff4fc 100%);
+            --card-bg: rgba(255, 255, 255, 0.85);
+            --text-main: #4a4e69;
+            --text-muted: #9a8c98;
+            
+            /* Pastel Palette */
+            --pastel-pink: #ffcad4;
+            --pastel-peach: #f4acb7;
+            --pastel-green: #b5e2fa;
+            --pastel-blue: #90e0ef;
+            --pastel-purple: #e2afff;
+            --pastel-yellow: #faedcd;
+            
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --shadow: 0 8px 24px rgba(154, 140, 152, 0.15);
+            --transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* --- Global Resets & Typography --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 2rem 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 600;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* --- Header & Blurb Section --- */
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            background: var(--card-bg);
+            padding: 2.5rem 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(10px);
+            border: 2px solid white;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #ff7096;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 0px #ffe5ec;
+        }
+
+        .blurb {
+            font-size: 1.15rem;
+            line-height: 1.6;
+            max-width: 700px;
+            margin: 0 auto 1.5rem auto;
+            color: var(--text-main);
+        }
+
+        .cta-highlight {
+            font-weight: 700;
+            color: #4ea8de;
+            display: inline-block;
+            padding: 0.25rem 0.7rem;
+            background: #e2afff40;
+            border-radius: 12px;
+        }
+
+        .disclaimer {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-style: italic;
+            border-top: 1px dashed #ffcad4;
+            padding-top: 1rem;
+            margin-top: 1rem;
+        }
+
+        /* --- Grid Layout Architecture --- */
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 per row on desktop */
+            gap: 1.5rem;
+            width: 100%;
+        }
+
+        /* --- App Card Styles --- */
+        .app-card {
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            padding: 2rem 1.5rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(10px);
+            border: 2px solid white;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 30px rgba(154, 140, 152, 0.25);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        /* Playful Icon Wrapper */
+        .icon-wrapper {
+            width: 70px;
+            height: 70px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+            transition: var(--transition);
+        }
+
+        .app-card:hover .icon-wrapper {
+            transform: rotate(10deg);
+        }
+
+        /* CSS Icon Graphics (No external media dependency) */
+        .icon-shape {
+            font-size: 2rem;
+            user-select: none;
+        }
+
+        .app-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        .app-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+            margin-bottom: 1.25rem;
+        }
+
+        /* Bubbly Button Link */
+        .card-btn {
+            background: #ff7096;
+            color: white;
+            font-weight: 700;
+            padding: 0.6rem 1.2rem;
+            border-radius: var(--radius-md);
+            font-size: 0.9rem;
+            transition: var(--transition);
+            box-shadow: 0 4px 10px rgba(255, 112, 150, 0.3);
+        }
+
+        .app-card:hover .card-btn {
+            background: #ff477e;
+            box-shadow: 0 6px 15px rgba(255, 112, 150, 0.5);
+        }
+
+        /* --- Responsive Breakpoints --- */
+        @media (max-width: 1024px) {
+            .showcase-grid {
+                grid-template-columns: repeat(3, 1fr); /* 3 per row on small desktops/tablets */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .showcase-grid {
+                grid-template-columns: repeat(2, 1fr); /* 2 per row on smaller tablets */
+            }
+            h1 {
+                font-size: 2.25rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .showcase-grid {
+                grid-template-columns: 1fr; /* 1 per row on mobile screens */
+            }
+            body {
+                padding: 1rem 0.5rem;
+            }
+            header {
+                padding: 1.5rem 1rem;
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Web Apps Showcase</h1>
+            <p class="blurb">
+                Welcome! This platform was crafted blending <strong>human intelligence</strong> and <strong>AI</strong> architecture to build seamless digital interactions. <span class="cta-highlight">You can have apps like these working for you!</span> Dive in and explore the possibilities.
+            </p>
+            <div class="disclaimer">
+                <strong>Disclaimer:</strong> Strictly for hobby use only at this stage.
+            </div>
+        </header>
+
+        <main class="showcase-grid" id="grid-container">
+            </main>
+    </div>
+
+    <script>
+        // Data Registry for 12 Apps containing Titles, Outlines, Mock URLs, Custom CSS Palette targets, and Unicode Layout Icons
+        const showcaseApps = [
+            { title: "TaskyBuddy", desc: "Keep track of your whimsical daily goals effortlessly.", icon: "📝", bg: "var(--pastel-pink)", url: "https://example.com/taskybuddy" },
+            { title: "ZenCloud", desc: "Immersive nature soundscapes to float your stress away.", icon: "☁️", bg: "var(--pastel-blue)", url: "https://example.com/zencloud" },
+            { title: "BakeTime", desc: "A cheerful timer for perfectly golden pastries.", icon: "🍪", bg: "var(--pastel-yellow)", url: "https://example.com/baketime" },
+            { title: "SproutLog", desc: "Track your plant babies' hydration and growth.", icon: "🌱", bg: "var(--pastel-green)", url: "https://example.com/sproutlog" },
+            { title: "MoodRing", desc: "Log your daily vibes with vibrant pastel aesthetics.", icon: "🎨", bg: "var(--pastel-purple)", url: "https://example.com/moodring" },
+            { title: "CaloCrunch", desc: "A delightful way to tally your snacks and meals.", icon: "🍎", bg: "var(--pastel-peach)", url: "https://example.com/calocrunch" },
+            { title: "DoodlePad", desc: "A clean canvas for your spontaneous digital sketches.", icon: "✏️", bg: "var(--pastel-pink)", url: "https://example.com/doodlepad" },
+            { title: "PocketBudget", desc: "An approachable layout for tracking pocket change.", icon: "💰", bg: "var(--pastel-green)", url: "https://example.com/pocketbudget" },
+            { title: "FitHop", desc: "Fun, accessible micro-workouts for energetic breaks.", icon: "👟", bg: "var(--pastel-blue)", url: "https://example.com/fithop" },
+            { title: "StarGaze", desc: "Locate constellations in real time from your screen.", icon: "✨", bg: "var(--pastel-purple)", url: "https://example.com/stargaze" },
+            { title: "WordWiggle", desc: "An engaging daily linguistic and spelling challenge.", icon: "🧩", bg: "var(--pastel-yellow)", url: "https://example.com/wordwiggle" },
+            { title: "AquaRemind", desc: "Friendly animations reminding you to stay hydrated.", icon: "💧", bg: "var(--pastel-peach)", url: "https://example.com/aquaremind" }
+        ];
+
+        const gridContainer = document.getElementById('grid-container');
+
+        // Dynamic Card Builder Engine
+        showcaseApps.forEach(app => {
+            // Build the core link element container
+            const card = document.createElement('a');
+            card.className = 'app-card';
+            card.href = app.url;
+            card.target = '_blank';
+            card.rel = 'noopener noreferrer';
+            card.setAttribute('aria-label', `Open ${app.title} web application in a new tab`);
+
+            // Assemble internal structure
+            card.innerHTML = `
+                <div class="icon-wrapper" style="background-color: ${app.bg};">
+                    <span class="icon-shape" role="img" aria-hidden="true">${app.icon}</span>
+                </div>
+                <div>
+                    <h2 class="app-title">${app.title}</h2>
+                    <p class="app-desc">${app.desc}</p>
+                </div>
+                <span class="card-btn">Launch App</span>
+            `;
+
+            gridContainer.appendChild(card);
+        });
+    </script>
+</body>
+</html>
