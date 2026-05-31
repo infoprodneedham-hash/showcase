@@ -223,6 +223,7 @@
 <body>
 
     <div class="container">
+        <!-- Header & Explanatory Blurb -->
         <header>
             <h1>Web Apps Showcase</h1>
             <p class="blurb">
@@ -233,30 +234,32 @@
             </div>
         </header>
 
+        <!-- 12-Card Responsive Grid -->
         <main class="showcase-grid" id="grid-container">
-            </main>
+            <!-- Populated accurately with the requested URLs via JavaScript -->
+        </main>
     </div>
 
     <script>
-        // High-accuracy application naming and iconography registry
+        // High-accuracy application array mapping user links to true functional names
         const showcaseApps = [
-            { title: "Invoice Generator", desc: "Instantly create, itemize, and format professional customer invoices online.", icon: "🧾", bg: "var(--pastel-pink)", url: "https://example.com/invoice-generator" },
-            { title: "Weather Dashboard", desc: "Real-time local forecasts, atmospheric conditions, and weekly outlooks.", icon: "🌤️", bg: "var(--pastel-blue)", url: "https://example.com/weather-dashboard" },
-            { title: "Task Manager", desc: "Organize workflows, establish deadlines, and check off completed targets.", icon: "📋", bg: "var(--pastel-yellow)", url: "https://example.com/task-manager" },
-            { title: "Retro Arcade Hub", desc: "A curated collection of classic, browser-based responsive mini-games.", icon: "🕹️", bg: "var(--pastel-purple)", url: "https://example.com/retro-arcade" },
-            { title: "SaaS Metrics Tracker", desc: "Monitor monthly recurring revenue, client signups, and business growth analytics.", icon: "📈", bg: "var(--pastel-green)", url: "https://example.com/metrics-tracker" },
-            { title: "Shift Scheduler", desc: "Easily calendar daily hours, client service logs, and roster rotations.", icon: "📅", bg: "var(--pastel-peach)", url: "https://example.com/shift-scheduler" },
-            { title: "Password Vault", desc: "Securely generate and store complex, localized cryptographic passwords.", icon: "🔒", bg: "var(--pastel-blue)", url: "https://example.com/password-vault" },
-            { title: "Markdown Editor", desc: "Write, preview, and export clean rich-text formatting effortlessly.", icon: "📝", bg: "var(--pastel-pink)", url: "https://example.com/markdown-editor" },
-            { title: "Resume Builder", desc: "Input professional details to generate instantly polished career profiles.", icon: "💼", bg: "var(--pastel-green)", url: "https://example.com/resume-builder" },
-            { title: "Expense Tracker", desc: "Log overhead operational costs, receipts, and structural budgets.", icon: "💰", bg: "var(--pastel-yellow)", url: "https://example.com/expense-tracker" },
-            { title: "CRM Contact Log", desc: "Manage client interaction notes, profile histories, and support logs.", icon: "👥", bg: "var(--pastel-purple)", url: "https://example.com/crm-log" },
-            { title: "Unit Converter", desc: "Fast conversions between metrics, weights, and digital formats.", icon: "🔄", bg: "var(--pastel-peach)", url: "https://example.com/unit-converter" }
+            { title: "Bill Pay Tracker", desc: "Keep track of upcoming accounts, subscription expenses, and payment dates.", icon: "💵", bg: "var(--pastel-pink)", url: "https://bill-pay-five.vercel.app/" },
+            { title: "My Sugars Log", desc: "Easily monitor, chart, and manage daily blood glucose readings.", icon: "🩸", bg: "var(--pastel-blue)", url: "https://my-sugars.vercel.app/" },
+            { title: "Sharp Shooter", desc: "Test your focus and reflex speeds in an interactive timing challenge.", icon: "🎯", bg: "var(--pastel-yellow)", url: "https://sharp-shooter-six.vercel.app/" },
+            { title: "Drawing Pad", desc: "A clean, responsive canvas sketchpad for digital drawings and notes.", icon: "🎨", bg: "var(--pastel-purple)", url: "https://drawing-ashen-three.vercel.app/" },
+            { title: "Dietary Management", desc: "Plan meals, track caloric intakes, and manage custom nutritional goals.", icon: "🥗", bg: "var(--pastel-green)", url: "https://dietary-management-three.vercel.app/" },
+            { title: "Support Control Panel", desc: "Streamline service requests, client tickets, and operational updates.", icon: "⚙️", bg: "var(--pastel-peach)", url: "https://supportcontrolpanel.com/" },
+            { title: "Aussie Biz Tool Hub", desc: "A tailored bundle of digital utilities optimized for Australian small businesses.", icon: "🇦🇺", bg: "var(--pastel-blue)", url: "https://aussiebiztoolhub.com/" },
+            { title: "Star Ship Adventure", desc: "Navigate through deep space in this browser-based arcady arcade action game.", icon: "🚀", bg: "var(--pastel-pink)", url: "https://star-ship-adventure.vercel.app/" },
+            { title: "Keep Running Tracker", desc: "Map your jogging routines, evaluate cardio streaks, and log distances.", icon: "🏃", bg: "var(--pastel-green)", url: "https://keep-running-nu.vercel.app/" },
+            { title: "Interior AI Generator", desc: "Visualize layout concepts and map aesthetic ideas for living spaces.", icon: "🛋️", bg: "var(--pastel-yellow)", url: "https://interior-gen.vercel.app/" },
+            { title: "Character Style Creator", desc: "Design avatars, configure cosmetic profiles, and customize style traits.", icon: "🎭", bg: "var(--pastel-purple)", url: "https://character-style.vercel.app/" },
+            { title: "7 Days Top News", desc: "Stay informed with a curated digest of the past week's main headlines.", icon: "📰", bg: "var(--pastel-peach)", url: "https://7days-topnews.vercel.app/" }
         ];
 
         const gridContainer = document.getElementById('grid-container');
 
-        // Render loop matching layouts precisely
+        // Dynamic Card Builder Engine
         showcaseApps.forEach(app => {
             const card = document.createElement('a');
             card.className = 'app-card';
