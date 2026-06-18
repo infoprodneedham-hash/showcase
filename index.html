@@ -4,17 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web Apps Showcase</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    
     <style>
+        /* --- Design System & Variables --- */
         :root {
-            --bg-color: #0b0f19;
-            --card-bg: #1e293b;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --accent-color: #38bdf8;
-            --accent-hover: #0ea5e9;
-            --border-color: #334155;
+            --bg-gradient: linear-gradient(135deg, #ffe5ec 0%, #cff4fc 100%);
+            --card-bg: rgba(255, 255, 255, 0.85);
+            --text-main: #4a4e69;
+            --text-muted: #7d7482;
+            
+            /* Pastel Palette */
+            --pastel-pink: #ffcad4;
+            --pastel-peach: #f4acb7;
+            --pastel-green: #b5e2fa;
+            --pastel-blue: #90e0ef;
+            --pastel-purple: #e2afff;
+            --pastel-yellow: #faedcd;
+            
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --shadow: 0 8px 24px rgba(154, 140, 152, 0.12);
+            --transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
+        /* --- Global Resets & Typography --- */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -22,108 +38,184 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
+            font-family: 'Quicksand', sans-serif;
+            background: var(--bg-gradient);
+            background-attachment: fixed;
             color: var(--text-main);
-            line-height: 1.6;
-            padding: 2rem 1rem;
+            min-height: 100vh;
+            padding: 3rem 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 600;
         }
 
         .container {
+            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
         }
 
+        /* --- Header & Blurb Section --- */
         header {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 3.5rem;
+            background: var(--card-bg);
+            padding: 2.5rem 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(10px);
+            border: 2px solid white;
         }
 
-        header h1 {
-            font-size: 2.5rem;
+        h1 {
+            font-size: 3rem;
+            color: #b5e2fa;
             margin-bottom: 1rem;
-            color: var(--text-main);
-            letter-spacing: -0.025em;
+            text-shadow: 2px 2px 0px #ffe5ec;
         }
 
-        header p {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            max-width: 700px;
+        .blurb {
+            font-size: 1.15rem;
+            line-height: 1.6;
+            max-width: 750px;
             margin: 0 auto 1.5rem auto;
+            color: var(--text-main);
+        }
+
+        .cta-highlight {
+            font-weight: 700;
+            color: #2a9d8f;
+            display: inline-block;
+            padding: 0.25rem 0.7rem;
+            background: #b5e2fa60;
+            border-radius: 12px;
         }
 
         .disclaimer {
-            font-size: 0.875rem;
-            color: var(--accent-color);
+            font-size: 0.85rem;
+            color: var(--text-muted);
             font-style: italic;
+            border-top: 1px dashed #ffcad4;
+            padding-top: 1rem;
+            margin-top: 1rem;
         }
 
-        /* Responsive Grid Setup */
+        /* --- Grid Layout Architecture (4 per row on desktop) --- */
         .showcase-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            width: 100%;
         }
 
-        /* Card Styling */
+        /* --- App Card Styles --- */
         .app-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            overflow: hidden;
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            padding: 2rem 1.25rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(10px);
+            border: 2px solid white;
+            text-decoration: none;
+            color: inherit;
             display: flex;
             flex-direction: column;
-            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+            align-items: center;
+            justify-content: space-between;
+            transition: var(--transition);
         }
 
         .app-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--accent-color);
-            box-shadow: 0 10px 20px rgba(56, 189, 248, 0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(154, 140, 152, 0.2);
+            background: rgba(255, 255, 255, 0.95);
         }
 
-        .card-content {
-            padding: 1.5rem;
-            flex-grow: 1;
+        /* Icon Wrapper */
+        .icon-wrapper {
+            width: 75px;
+            height: 75px;
+            border-radius: var(--radius-md);
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+            transition: var(--transition);
         }
 
-        .card-content h3 {
+        .app-card:hover .icon-wrapper {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .icon-shape {
+            font-size: 2.25rem;
+            user-select: none;
+        }
+
+        .app-title {
             font-size: 1.25rem;
             margin-bottom: 0.5rem;
             color: var(--text-main);
         }
 
-        .card-content p {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-            flex-grow: 1;
-        }
-
-        .card-btn {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: #000;
-            text-align: center;
-            padding: 0.75rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
+        .app-desc {
             font-size: 0.9rem;
-            transition: background-color 0.2s ease;
+            color: var(--text-muted);
+            line-height: 1.4;
+            margin-bottom: 1.5rem;
         }
 
-        .card-btn:hover {
-            background-color: var(--accent-hover);
+        /* Bubbly Button Link */
+        .card-btn {
+            background: #b5e2fa;
+            color: white;
+            font-weight: 700;
+            padding: 0.6rem 1.5rem;
+            border-radius: var(--radius-md);
+            font-size: 0.9rem;
+            transition: var(--transition);
+            box-shadow: 0 4px 10px rgba(255, 112, 150, 0.25);
+            width: 80%;
+        }
+
+        .app-card:hover .card-btn {
+            background: #ff477e;
+            box-shadow: 0 6px 15px rgba(255, 112, 150, 0.4);
+            width: 90%;
+        }
+
+        /* --- Responsive Viewports --- */
+        @media (max-width: 1024px) {
+            .showcase-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
         }
 
         @media (max-width: 768px) {
-            header h1 {
-                font-size: 2rem;
+            .showcase-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .showcase-grid {
+                grid-template-columns: 1fr;
+            }
+            body {
+                padding: 1.5rem 0.5rem;
+            }
+            header {
+                padding: 1.75rem 1rem;
+                margin-bottom: 2rem;
             }
         }
     </style>
@@ -133,64 +225,65 @@
     <div class="container">
         <header>
             <h1>Web Apps Showcase</h1>
-            <p>This collection highlights tools built using a blend of <strong>human intelligence</strong> and <strong>AI</strong> frameworks to achieve clean, practical digital workflows. You can have apps like these working for you!</p>
-            <p class="disclaimer"><strong>Disclaimer:</strong> Hobby use only at this stage.</p>
+            <p class="blurb">
+                This collection highlights tools built using a blend of <strong>human intelligence</strong> and <strong>AI</strong> frameworks to achieve clean, practical digital workflows. <span class="cta-highlight">You can have apps like these working for you!</span>
+            </p>
+            <div class="disclaimer">
+                <strong>Disclaimer:</strong> Hobby use only at this stage.
+            </div>
         </header>
 
-        <main>
-            <div class="showcase-grid">
-                
-                <div class="app-card">
-                    <div class="card-content">
-                        <h3>BizToolHub</h3>
-                        <p>Centralized control panel and utilities management layout.</p>
-                        <a href="#" class="card-btn" target="_blank">Launch App</a>
-                    </div>
-                </div>
-
-                <div class="app-card">
-                    <div class="card-content">
-                        <h3>RetroSpace Hub</h3>
-                        <p>Curated collection of 8-bit browser arcade experiences.</p>
-                        <a href="#" class="card-btn" target="_blank">Launch App</a>
-                    </div>
-                </div>
-
-                <div class="app-card">
-                    <div class="card-content">
-                        <h3>Jet Fighter Six</h3>
-                        <p>Web application project deployment featuring custom interactive elements.</p>
-                        <a href="https://jet-fighter-six.vercel.app/" class="card-btn" target="_blank">Launch App</a>
-                    </div>
-                </div>
-
-                <div class="app-card">
-                    <div class="card-content">
-                        <h3>Intro One Steel</h3>
-                        <p>Front-end dashboard utility configured for seamless responsive design.</p>
-                        <a href="https://intro-one-steel.vercel.app/" class="card-btn" target="_blank">Launch App</a>
-                    </div>
-                </div>
-
-                <div class="app-card">
-                    <div class="card-content">
-                        <h3>Debt Management</h3>
-                        <p>Practical client-side data persistence tracker for personal calculations.</p>
-                        <a href="https://debtmgt.vercel.app/" class="card-btn" target="_blank">Launch App</a>
-                    </div>
-                </div>
-
-                <div class="app-card">
-                    <div class="card-content">
-                        <h3>Classic One Delta</h3>
-                        <p>Custom serverless deployment utilizing rapid-build design frameworks.</p>
-                        <a href="https://classic-one-delta.vercel.app/" class="card-btn" target="_blank">Launch App</a>
-                    </div>
-                </div>
-
-            </div>
+        <main class="showcase-grid" id="grid-container">
         </main>
     </div>
 
+    <script>
+        // High-accuracy application array mapping links to updated true functional profiles
+        const showcaseApps = [
+            { title: "Bill Pay Tracker", desc: "Keep track of upcoming accounts, subscription expenses, and payment dates.", icon: "💵", bg: "var(--pastel-pink)", url: "https://bill-pay-five.vercel.app/" },
+            { title: "My Sugars Log", desc: "Easily monitor, chart, and manage daily blood glucose readings.", icon: "🩸", bg: "var(--pastel-blue)", url: "https://my-sugars.vercel.app/" },
+            { title: "Sharp Shooter", desc: "Test your focus and reflex speeds in an interactive timing challenge.", icon: "🎯", bg: "var(--pastel-yellow)", url: "https://sharp-shooter-six.vercel.app/" },
+            { title: "Drawing Pad", desc: "A clean, responsive canvas sketchpad for digital drawings and notes.", icon: "🎨", bg: "var(--pastel-purple)", url: "https://drawing-ashen-three.vercel.app/" },
+            { title: "Dietary Management", desc: "Plan meals, track caloric intakes, and manage custom nutritional goals.", icon: "🥗", bg: "var(--pastel-green)", url: "https://dietary-management-three.vercel.app/" },
+            { title: "Support Control Panel", desc: "Streamline service requests, client tickets, and operational updates.", icon: "⚙️", bg: "var(--pastel-peach)", url: "https://supportcontrolpanel.com/" },
+            { title: "Aussie Biz Tool Hub", desc: "A tailored bundle of digital utilities optimized for Australian small businesses.", icon: "🇦🇺", bg: "var(--pastel-blue)", url: "https://aussiebiztoolhub.com/" },
+            { title: "Star Ship Adventure", desc: "Navigate through deep space in this browser-based arcade action game.", icon: "🚀", bg: "var(--pastel-pink)", url: "https://star-ship-adventure.vercel.app/" },
+            { title: "Car Racer", desc: "Stay on track and test your driving skills in an arcade racing environment.", icon: "🏎️", bg: "var(--pastel-green)", url: "https://keep-running-nu.vercel.app/" },
+            { title: "Interior AI Generator", desc: "Visualize layout concepts and map aesthetic ideas for living spaces.", icon: "🛋️", bg: "var(--pastel-yellow)", url: "https://interior-gen.vercel.app/" },
+            { title: "Character Style Creator", desc: "Design avatars, configure cosmetic profiles, and customize style traits.", icon: "🎭", bg: "var(--pastel-purple)", url: "https://character-style.vercel.app/" },
+            { title: "7 Days Top News", desc: "Stay informed with a curated digest of the past week's main headlines.", icon: "📰", bg: "var(--pastel-peach)", url: "https://7days-topnews.vercel.app/" },
+            
+            // NEW ADDED BOTTOM ROW OF 4 APPS
+            { title: "Jet Fighter Six", desc: "Engage in quick reflex arcade flight maneuvers inside a web dashboard tracker.", icon: "🛩️", bg: "var(--pastel-pink)", url: "https://jet-fighter-six.vercel.app/" },
+            { title: "Intro One Steel", desc: "An introductory front-end hub optimized with high-contrast UI accents.", icon: "🏗️", bg: "var(--pastel-blue)", url: "https://intro-one-steel.vercel.app/" },
+            { title: "Debt Management", desc: "Track payments, calculate outstanding debts, and structure balance summaries.", icon: "📊", bg: "var(--pastel-green)", url: "https://debtmgt.vercel.app/" },
+            { title: "Classic One Delta", desc: "A clean utility configuration built around rapid digital core modules.", icon: "⚡", bg: "var(--pastel-yellow)", url: "https://classic-one-delta.vercel.app/" }
+        ];
+
+        const gridContainer = document.getElementById('grid-container');
+
+        // Dynamic Card Builder Engine
+        showcaseApps.forEach(app => {
+            const card = document.createElement('a');
+            card.className = 'app-card';
+            card.href = app.url;
+            card.target = '_blank';
+            card.rel = 'noopener noreferrer';
+            card.setAttribute('aria-label', `Launch the ${app.title} application in a new tab`);
+
+            card.innerHTML = `
+                <div class="icon-wrapper" style="background-color: ${app.bg};">
+                    <span class="icon-shape" role="img" aria-hidden="true">${app.icon}</span>
+                </div>
+                <div>
+                    <h2 class="app-title">${app.title}</h2>
+                    <p class="app-desc">${app.desc}</p>
+                </div>
+                <span class="card-btn">Open App</span>
+            `;
+
+            gridContainer.appendChild(card);
+        });
+    </script>
 </body>
 </html>
